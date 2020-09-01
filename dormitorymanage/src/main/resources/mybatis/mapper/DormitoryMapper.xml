@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.laoye.mapper.DormitoryMapper">
+
+    <resultMap id="dormitoryStudentsMap" type="com.laoye.pojo.Dormitory">
+
+        <id property="did" column="did"></id>
+        <result property="dName" column="dname"></result>
+        <result property="beds" column="beds"></result>
+
+        <collection property="students" ofType="com.laoye.pojo.Student">
+            <id property="sid" column="sid"></id>
+            <result property="name" column="name"></result>
+            <result property="gender" column="gender"></result>
+        </collection>
+
+    </resultMap>
+    <select id="findAllDormitories" resultType="com.laoye.pojo.Dormitory">
+        SELECT *
+        FROM dormitory
+    </select>
+
+    <select id="findAllStudentsByDormitory" parameterType="Integer" resultMap="dormitoryStudentsMap">
+        SELECT d.did,s.sid,s.`name`,s.gender
+        FROM student s
+        LEFT OUTER JOIN  dormitory d
+        ON s.did = d.did
+        WHERE d.did = #{did}
+        ORDER BY DESC
+    </select>
+
+    <select id="adminFindAllStudentsByDormitory" resultMap="dormitoryStudentsMap">
+        SELECT d.did,s.sid,s.`name`,s.gender
+        FROM student s
+        LEFT OUTER JOIN  dormitory d
+        ON s.did = d.did
+    </select>
+
+
+</mapper>

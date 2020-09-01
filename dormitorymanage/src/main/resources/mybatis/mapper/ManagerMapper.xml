@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.laoye.mapper.ManagerMapper">
+
+    <resultMap id="managerMap" type="com.laoye.pojo.Manager">
+        <id property="mid" column="mid"></id>
+        <result property="name" column="mname"></result>
+        <result property="bid" column="bid"></result>
+        <result property="tel" column="tel"></result>
+
+        <association property="dormitory" column="bid" javaType="com.laoye.pojo.Dormitory">
+            <id property="did" column="did"></id>
+            <result property="dName" column="dname"></result>
+        </association>
+
+    </resultMap>
+
+    <select id="findAllManager" resultMap="managerMap">
+        SELECT m.mid,m.mname,m.bid,d.dname,m.tel
+        FROM manager m, dormitory d
+        WHERE m.bid = d.bid
+    </select>
+
+
+</mapper>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.laoye.mapper.RepairsMapper">
+
+    <resultMap id="dormitoryRepairsMap" type="com.laoye.pojo.Dormitory">
+
+        <id property="did" column="did"></id>
+        <result property="dName" column="dname"></result>
+
+        <collection property="repairs" ofType="com.laoye.pojo.Repair">
+            <id property="rid" column="rid"></id>
+            <result property="info" column="info"></result>
+            <result property="state" column="state"></result>
+            <result property="date" column="date"></result>
+        </collection>
+
+    </resultMap>
+
+    <select id="findAllRepairs" resultType="com.laoye.pojo.Repair">
+        SELECT *
+        FROM repairs
+    </select>
+    <select id="findRepairByDid" parameterType="Integer" resultMap="dormitoryRepairsMap">
+        SELECT d.did,r.rid,r.info,r.state,r.date
+        FROM repairs r
+        LEFT OUTER JOIN  dormitory d
+        ON r.did = d.did
+        WHERE d.did = #{did}
+    </select>
+
+    <select id="adminFindRepairByDid" resultMap="dormitoryRepairsMap">
+        SELECT d.did,r.rid,r.info,r.state,r.date
+        FROM repairs r
+        LEFT OUTER JOIN  dormitory d
+        ON r.did = d.did
+        ORDER BY r.date DESC
+    </select>
+
+    <select id="findRepairById" parameterType="Integer" resultType="com.laoye.pojo.Repair">
+        SELECT *
+        FROM repairs
+        WHERE rid = #{rid}
+    </select>
+
+    <update id="updateRepair" parameterType="com.laoye.pojo.Repair">
+        UPDATE repairs
+        SET rid = #{rid},info = #{info},state = #{state},date=#{date},date = #{date}
+        WHERE rid = #{rid}
+    </update>
+
+    <update id="stuUpdateRepair" parameterType="com.laoye.pojo.Repair">
+        UPDATE repairs
+        SET rid = #{rid},info = #{info},date = #{date}
+        WHERE rid = #{rid}
+    </update>
+
+    <delete id="delRepairById" parameterType="Integer">
+        DELETE
+        FROM repairs
+        WHERE rid = #{rid}
+    </delete>
+
+    <insert id="addRepair" parameterType="com.laoye.pojo.Repair">
+        INSERT INTO
+        repairs(did,rid,info,date)
+        VALUES
+        (#{did},#{rid},#{info},#{date})
+    </insert>
+
+</mapper>
