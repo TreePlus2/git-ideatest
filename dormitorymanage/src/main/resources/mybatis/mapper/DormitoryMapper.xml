@@ -28,7 +28,7 @@
         LEFT OUTER JOIN  dormitory d
         ON s.did = d.did
         WHERE d.did = #{did}
-        ORDER BY DESC
+--         ORDER BY DESC
     </select>
 
     <select id="adminFindAllStudentsByDormitory" resultMap="dormitoryStudentsMap">
