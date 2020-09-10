@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50645
 File Encoding         : 65001
 
-Date: 2020-09-09 20:56:39
+Date: 2020-09-10 00:09:36
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -55,9 +55,6 @@ CREATE TABLE `dormitory` (
 -- ----------------------------
 -- Records of dormitory
 -- ----------------------------
-INSERT INTO `dormitory` VALUES ('11111', '1001', '北校区博雅苑一号楼', '6');
-INSERT INTO `dormitory` VALUES ('12111', '1002', '北校区博雅苑二号楼', '6');
-INSERT INTO `dormitory` VALUES ('21111', '2001', '南校区天和苑一号楼', '6');
 INSERT INTO `dormitory` VALUES ('23121', '2003', '南校区天和苑三号楼', '6');
 INSERT INTO `dormitory` VALUES ('27119', '2007', '南校区天和苑七号楼', '6');
 INSERT INTO `dormitory` VALUES ('27139', '2007', '南校区天和苑七号楼', '6');
@@ -80,11 +77,8 @@ CREATE TABLE `manager` (
 -- ----------------------------
 -- Records of manager
 -- ----------------------------
-INSERT INTO `manager` VALUES ('2017001', '2003', '阿姨一号', '15858222221', '123456');
+INSERT INTO `manager` VALUES ('2017001', '2003', '阿姨一号', '15858270121', '123456');
 INSERT INTO `manager` VALUES ('2017002', '2007', '阿姨二号', '11234578922', '123456');
-INSERT INTO `manager` VALUES ('2017003', '1001', '阿姨三号', '15856123471', '123456');
-INSERT INTO `manager` VALUES ('2017004', '2001', '阿姨四号', '15878461322', '123456');
-INSERT INTO `manager` VALUES ('2017005', '1002', '阿姨五号', '11111111111', '123456');
 
 -- ----------------------------
 -- Table structure for `repairs`

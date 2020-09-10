@@ -28,6 +28,8 @@ public class LoginController {
             @RequestParam("password") String password,
             @RequestParam("sign") Integer sign,
             Model model, HttpSession session) {
+        System.out.println(id);
+        System.out.println(password);
         sid = id;
         if (sign == 0){//管理员登陆
             String name = loginService.checkAdminLogin(id, password);

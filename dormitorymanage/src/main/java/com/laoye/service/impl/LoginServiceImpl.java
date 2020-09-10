@@ -19,7 +19,4 @@ public class LoginServiceImpl implements ILoginService {
         return loginMapper.checkAdminLogin(mid,password);
     }
 
-//    public String checkLogin(Integer sid, String password) {
-//        return studentMapper.checkLogin(sid,password);
-//    }
 }
